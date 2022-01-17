@@ -10,6 +10,7 @@ export default function NavBar() {
                         <strong>Trading Dives</strong>
                         <div className='anchorPoint'>
                             <a href='/'>Getting Started</a>
+                            <a href='/profile'>Profile</a>
                         </div>
                     </div>
                 </div>
