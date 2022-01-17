@@ -1,0 +1,29 @@
+.navigationContainer {
+    height: 60px;
+    background-color: #272727;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%
+}
+
+.logoDisplay {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    color:aliceblue;
+    margin-left: 20px;
+    font-size: 20px;
+    flex-basis: 500px;
+    
+    width: 100px;
+    height: 50px;
+}
+
+.anchorPoint {
+    display: flex;
+    text-align: center;
+    color:darkred;
+    font-weight: bold;
+    
+}
