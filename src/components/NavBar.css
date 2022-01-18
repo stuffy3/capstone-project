@@ -1,29 +1,56 @@
-.navigationContainer {
+* {
+    box-sizing: border-box;
+}
+
+.navContainer {
+    position: -webkit-sticky;
+    position: sticky;
+    overflow: hidden;
+    top: 0;
+    z-index: 4;
+}
+
+.navBarInner {
     height: 60px;
     background-color: #272727;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
-    width: 100%
+    justify-content: flex-start;
+    width: 100%;
 }
 
-.logoDisplay {
+.navBarItems {
     display: flex;
-    min-width: 0;
+    flex: 1 1 auto;
+    justify-content: flex-start;
     align-items: center;
     color:aliceblue;
     margin-left: 20px;
-    font-size: 20px;
-    flex-basis: 500px;
-    
-    width: 100px;
+    margin-right: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    flex-basis: 300px;
     height: 50px;
 }
 
-.anchorPoint {
+.anchorPointRight {
+    
     display: flex;
-    text-align: center;
     color:darkred;
     font-weight: bold;
+    align-items: center;
+    justify-content: flex-end;
     
+}
+
+.anchorPointRight > a {
+    padding-right: 60px;
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.5s;
+}
+
+a:hover {
+    color: #14a76c;
 }

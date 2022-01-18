@@ -3,15 +3,17 @@ import './NavBar.css'
 
 export default function NavBar() {
     return (
-        <div>
+        <div className='navContainer'>
             <nav className='navigation'>
-                <div className='navigationContainer'>
-                    <div className='logoDisplay'>
-                        <strong>Trading Dives</strong>
-                        <div className='anchorPoint'>
-                            <a href='/'>Getting Started</a>
-                            <a href='/profile'>Profile</a>
-                        </div>
+                <div className='navBarInner'>
+                    <div className='navBarItems'>
+                        The Trading Eye
+                    </div>
+                    <div className='anchorPointRight'>
+                        <a href='/'>Home</a>
+                        <a href='/instructions'>Getting Started</a>
+                        <a href='/create'>Create Entry</a>
+                        <a href='/profile'>Profile</a>
                     </div>
                 </div>
             </nav>

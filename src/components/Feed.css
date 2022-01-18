@@ -1,0 +1,17 @@
+.mainFeedContainer {
+    background-color: #747474;
+    display: flex;
+    width: 100;
+    height: 100vh;
+}
+
+.mainFeedInner {
+    display: flex;
+    margin: auto;
+    align-content: center;
+    opacity: 20%;
+    background-color: #272727;
+    width: 75%;
+    height: 100vh;
+
+}
