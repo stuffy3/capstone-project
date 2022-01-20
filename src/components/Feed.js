@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import Posts from './components/Posts'
 import './Feed.css'
 
 export default class Feed extends Component {
