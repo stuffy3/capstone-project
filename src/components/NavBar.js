@@ -10,7 +10,7 @@ export default function NavBar() {
                         The Trading Eye
                     </div>
                     <div className='anchorPointRight'>
-                        <a href='/'>Home</a>
+                        <a href='/home'>Home</a>
                         <a href='/instructions'>Getting Started</a>
                         <a href='/create'>Create Entry</a>
                         <a href='/profile'>Profile</a>

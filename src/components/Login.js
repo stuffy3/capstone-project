@@ -1,8 +1,10 @@
 import React from 'react'
 import {useFormik} from 'formik'
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 
-export default function Login() {
+export default function Login(props) {
+    let navigate = useNavigate()
 
     const initialValues = {
         username: "",
@@ -12,7 +14,10 @@ export default function Login() {
     const onSubmit = (values) => {
       axios.post('http://localhost:4000/login', values)
       .then((res) => {
-          console.log(res.data)
+          localStorage.setItem('username', res.data.username)
+          localStorage.setItem('id', res.data.id)
+          props.logFunction()
+          navigate('/home')
       })
         .catch((err) => {
           console.log(err.response.data)
