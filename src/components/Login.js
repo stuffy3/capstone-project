@@ -2,6 +2,7 @@ import React from 'react'
 import {useFormik} from 'formik'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
+import './Login.css'
 
 export default function Login(props) {
     let navigate = useNavigate()
@@ -43,25 +44,37 @@ export default function Login(props) {
     })
     
     return ( 
-        <div>
-            <h2>Login Page</h2>
-            <form onSubmit={formik.handleSubmit}>
-                <input
-                    type="text"
-                    name="username"
-                    onChange={formik.handleChange}
-                    values={formik.values.username}
-                    placeholder="Username"
-                    />
-                <input
-                    type="password"
-                    name="password"
-                    onChange={formik.handleChange}
-                    values={formik.values.password}
-                    placeholder="Password"
-                    />  
-                    <button type="submit" disabled={!formik.isValid}>Submit</button>       
-            </form>
+        <div className="mainBodyContainer">
+            <header>
+                
+            </header>
+            <div className='loginCenterContainer'>
+                <h1>Sign in</h1>
+                <hr width={250} />
+                <br />
+                <br />
+                <form onSubmit={formik.handleSubmit}>
+                    <input className="loginInput"
+                        type="text"
+                        name="username"
+                        onChange={formik.handleChange}
+                        values={formik.values.username}
+                        placeholder="Username"
+                        />
+                        <br />
+                        <br />
+                    <input className="loginInput"
+                        type="password"
+                        name="password"
+                        onChange={formik.handleChange}
+                        values={formik.values.password}
+                        placeholder="Password"
+                        />  
+                        <br />
+                        <br />
+                        <button type="submit" disabled={!formik.isValid}>Submit</button>       
+                </form>
+            </div>
         </div>
     )
 }

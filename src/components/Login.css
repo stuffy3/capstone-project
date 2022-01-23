@@ -1,0 +1,49 @@
+body {
+	background: linear-gradient(-50deg, #2bff22, #292929, #202020, #ff0000);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.mainBodyContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.mainBodyContainer > .loginCenterContainer {
+    display: flex;
+    box-shadow: 10px 10px 5px #191919;
+    background-color: #3a3a3a;
+    border-radius: 10px;
+    width: 300px;
+    height: 350px;
+    color:#ffffff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border:rgb(24, 24, 24)
+}
+.loginInput {
+    background-color: #5e5e5e;
+    color: #ffffff;
+}
+
+::placeholder {
+    padding-left: 5px;
+    color: #bebebe;
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import {Routes, Route} from 'react-router'
 import './NavBar.css'
 
 export default function NavBar() {
@@ -12,7 +13,7 @@ export default function NavBar() {
                     <div className='anchorPointRight'>
                         <a href='/home'>Home</a>
                         <a href='/instructions'>Getting Started</a>
-                        <a href='/create'>Create Entry</a>
+                        <a href='/create-post'>Create Entry</a>
                         <a href='/profile'>Profile</a>
                     </div>
                 </div>

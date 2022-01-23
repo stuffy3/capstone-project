@@ -51,6 +51,14 @@
     transition: color 0.5s;
 }
 
+ {
+    padding-right: 60px;
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.5s;
+}
+
 a:hover {
     color: #14a76c;
 }

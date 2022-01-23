@@ -1,5 +1,5 @@
 .mainFeedContainer {
-    background-color: #747474;
+    background-color: #272727;
     display: flex;
     width: 100;
     height: 100vh;
@@ -9,7 +9,7 @@
     display: flex;
     margin: auto;
     align-content: center;
-    opacity: 20%;
+    opacity: 100%;
     background-color: #272727;
     width: 75%;
     height: 100vh;
