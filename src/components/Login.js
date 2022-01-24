@@ -72,7 +72,7 @@ export default function Login(props) {
                         />  
                         <br />
                         <br />
-                        <button type="submit" disabled={!formik.isValid}>Submit</button>       
+                        <button type="submit" disabled={!formik.isValid}>Sign in</button>       
                 </form>
             </div>
         </div>
