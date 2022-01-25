@@ -10,7 +10,6 @@ body {
 		background-position: 0% 50%;
 	}
 	50% {
-    
 		background-position: 100% 50%;
 	}
 	100% {
@@ -20,20 +19,20 @@ body {
 
 .mainBodyContainer {
     display: flex;
-    flex-direction: row;
+    align-content: center;
     align-items: center;
     justify-content: center;
     height: 100vh;
 }
 
-.loginCenterContainer {
+.registerCenterContainer {
     display: flex;
     box-shadow: 10px 10px 20px #000000;
     background-color: #3a3a3a;
     border-radius: 10px;
     padding-bottom: 50px;
-    width: 300px;
-    height: 350px;
+    width: 350px;
+    height: 550px;
     color:#ffffff;
     flex-wrap: wrap;
     justify-content: center;
@@ -150,16 +149,19 @@ button:hover span:after {
   right: 0;
 }
 
-.registerLink {
+.loginLink {
   color: #747474;
   text-decoration: none;
   transition: color 0.5s;
   transition-property: color;
 }
 
-.registerLink:hover {
+.loginLink:hover {
   color: #2bff22;
   
 }
 
+.errorMessages {
+  color:#b90101
+}
 

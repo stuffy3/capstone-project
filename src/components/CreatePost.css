@@ -1,0 +1,73 @@
+.mainContentContainer__CreatePost {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.mainContentContainer__CreatePost__Form {
+  /* height: 110vh; */
+  margin-bottom: 100px;
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+h1 {
+  color: white;
+  margin-top: 25px;
+}
+
+h3 {
+  color: white;
+}
+.descriptionInput {
+  display: inline-block;
+  text-overflow: clip;
+  background-color: #5e5e5e;
+  resize: none;
+  color: white;
+  width: 800px;
+  height: 100px;
+}
+
+input {
+  height: 30px;
+  width: 200px;
+  border-color: #494949;
+  background-color: #5e5e5e;
+  color: #ffffff;
+}
+::placeholder {
+  color: transparent;
+}
+
+fieldset {
+  height: 75%;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-width: 3px;
+  border-color: #424242;
+  background-color: #161616;
+  border-radius: 10px;
+}
+
+.mainContentContainer__CreatePost br {
+  display: none;
+}
+
+.createPostErrorMessage {
+    margin-top: 25px;
+  color: #b90101;
+}
+
+.createPostSubmitButton {
+  margin-top: 25px;
+}
