@@ -30,6 +30,9 @@ body {
     box-shadow: 10px 10px 20px #000000;
     background-color: #3a3a3a;
     border-radius: 10px;
+    border-width: 3px;
+   border-style: solid;
+   border-color: #494949;
     padding-bottom: 50px;
     width: 350px;
     height: 550px;
@@ -37,22 +40,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    border:rgb(24, 24, 24)
-}
-
-.loginCenterContainerRight {
-  display: flex;
-  box-shadow: 10px 10px 20px #000000;
-  background-color: #3a3a3a;
-  border-radius: 10px;
-  padding-bottom: 20px;
-  width: 300px;
-  height: 350px;
-  color:#ffffff;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  border:rgb(24, 24, 24)
+    
 }
 
 .loginInput {
@@ -165,3 +153,7 @@ button:hover span:after {
   color:#b90101
 }
 
+input::placeholder {
+  padding-left: 5px;
+  color: #bebebe;
+}

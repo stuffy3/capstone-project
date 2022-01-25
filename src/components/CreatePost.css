@@ -43,7 +43,8 @@ input {
   background-color: #5e5e5e;
   color: #ffffff;
 }
-::placeholder {
+.mainContentContainer__CreatePost__Form input::placeholder {
+  
   color: transparent;
 }
 
