@@ -50,7 +50,8 @@ export default function Login(props) {
             </header>
             <div className='loginCenterContainer'>
                 <h1>Sign in</h1>
-                <hr width={250} />
+                <hr width={250} color={272727} />
+                <br />
                 <br />
                 <br />
                 <form onSubmit={formik.handleSubmit}>
@@ -72,7 +73,10 @@ export default function Login(props) {
                         />  
                         <br />
                         <br />
-                        <button type="submit" disabled={!formik.isValid}>Sign in</button>       
+                        <button type="submit" disabled={!formik.isValid}><span>Sign in</span></button>
+                        <br />
+                        <br />      
+                        <span><a className="registerLink" href="register">Don't have an account?</a></span>
                 </form>
             </div>
         </div>

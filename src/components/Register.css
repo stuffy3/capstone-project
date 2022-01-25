@@ -10,7 +10,6 @@ body {
 		background-position: 0% 50%;
 	}
 	50% {
-    
 		background-position: 100% 50%;
 	}
 	100% {
@@ -20,20 +19,20 @@ body {
 
 .mainBodyContainer {
     display: flex;
-    flex-direction: row;
+    align-content: center;
     align-items: center;
     justify-content: center;
     height: 100vh;
 }
 
-.loginCenterContainer {
+.registerCenterContainer {
     display: flex;
     box-shadow: 10px 10px 20px #000000;
     background-color: #3a3a3a;
     border-radius: 10px;
     padding-bottom: 50px;
-    width: 300px;
-    height: 350px;
+    width: 350px;
+    height: 550px;
     color:#ffffff;
     flex-wrap: wrap;
     justify-content: center;
@@ -87,14 +86,10 @@ input:focus {
 
 /* CSS */
 button {
-<<<<<<< HEAD
- 
-=======
   background-image: linear-gradient(0deg, #464646 9.16%, #585858 43.89%, #747474 75.72%);
   border-radius: 8px;
   width: 200px;
   border-style: none;
->>>>>>> 626d8398a332c3fcb20bf864a00c9cd24b287375
   box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
@@ -112,16 +107,10 @@ button {
   touch-action: manipulation;
 }
 
-<<<<<<< HEAD
-button:hover {
-  border-color: rgb(44, 44, 44);
- 
-=======
 
 /* button:hover {
   
   rgb(0, 255, 0);
->>>>>>> 626d8398a332c3fcb20bf864a00c9cd24b287375
   transition-duration: .6s;
 } */
 
@@ -160,16 +149,19 @@ button:hover span:after {
   right: 0;
 }
 
-.registerLink {
+.loginLink {
   color: #747474;
   text-decoration: none;
   transition: color 0.5s;
   transition-property: color;
 }
 
-.registerLink:hover {
+.loginLink:hover {
   color: #2bff22;
   
 }
 
+.errorMessages {
+  color:#b90101
+}
 

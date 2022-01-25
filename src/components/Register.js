@@ -1,8 +1,12 @@
 import React from 'react'
 import {useFormik} from 'formik'
 import axios from 'axios'
+import './Register.css'
+import {useNavigate} from 'react-router' 
 
 function Register() {
+    let navigate = useNavigate()
+
     const initialValues = {
         firstName: "",
         lastName: "",
@@ -17,9 +21,10 @@ function Register() {
       axios.post('http://localhost:4000/register', values)
       .then((res) => {
           console.log(res.data)
-          localStorage.setItem('firstName', res.data[0][0].firstName)
-          localStorage.setItem('username', res.data[0][0].username)
-          localStorage.setItem('id', res.data[0][0].id)
+        //   localStorage.setItem('firstName', res.data[0][0].firstName)
+        //   localStorage.setItem('username', res.data[0][0].username)
+        //   localStorage.setItem('id', res.data[0][0].id)
+        navigate('/login')
       })
       .catch((err) => console.log(err.response.data))
     }
@@ -56,62 +61,83 @@ function Register() {
         validate
     })
     return (
-        <div>
-            <h2>Register</h2>
-            <form onSubmit={formik.handleSubmit}>
-                <input
-                    type="text"
-                    name="firstName"
-                    onChange={formik.handleChange}
-                    values={formik.values.firstName}
-                    placeholder="First Name"
-                />
-                <input
-                    type="text"
-                    name="lastName"
-                    onChange={formik.handleChange}
-                    values={formik.values.lastName}
-                    placeholder="Last Name"
-                />
-                <input
-                    type="text"
-                    name="username"
-                    onChange={formik.handleChange}
-                    values={formik.values.username}
-                    placeholder="Username"
-                />
-                <input
-                    type="email"
-                    name="email"
-                    onChange={formik.handleChange}
-                    values={formik.values.email}
-                    placeholder="Email"
-                />
-                <input
-                    type="password"
-                    name="password"
-                    onChange={formik.handleChange}
-                    values={formik.values.password}
-                    placeholder="Password"
-                />  
-                <input
-                    type="password"
-                    name="confirmPassword"
-                    onChange={formik.handleChange}
-                    values={formik.values.confirmPassword}
-                    placeholder="Confirm Password"
-                />
-                    <button type="submit" disabled={!formik.isValid}>Submit</button> 
-            </form>
-            <div>
-                {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
-                {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
-                {formik.errors.username ? <div>{formik.errors.username}</div> : null}
-                {formik.errors.email ? <div>{formik.errors.email}</div> : null}
-                {formik.errors.password ? <div>{formik.errors.password}</div> : null}
-                {formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
+        <div className='mainBodyContainer'>
+            <div className="registerCenterContainer">
+                <h2>Register</h2>
+                <hr width={275} color={272727} />
+                <form onSubmit={formik.handleSubmit}>
+                    <input className="loginInput"
+                        type="text"
+                        name="firstName"
+                        onChange={formik.handleChange}
+                        values={formik.values.firstName}
+                        placeholder="First Name"
+                    />
+                    <br />
+                    <br />
+                    <input className="loginInput"
+                        type="text"
+                        name="lastName"
+                        onChange={formik.handleChange}
+                        values={formik.values.lastName}
+                        placeholder="Last Name"
+                    />
+                    <br />
+                    <br />
+                    <input className="loginInput"
+                        type="text"
+                        name="username"
+                        onChange={formik.handleChange}
+                        values={formik.values.username}
+                        placeholder="Username"
+                    />
+                    <br />
+                    <br />
+                    <input className="loginInput"
+                        type="email"
+                        name="email"
+                        onChange={formik.handleChange}
+                        values={formik.values.email}
+                        placeholder="Email"
+                    />
+                    <br />
+                    <br />
+                    <input className="loginInput"
+                        type="password"
+                        name="password"
+                        onChange={formik.handleChange}
+                        values={formik.values.password}
+                        placeholder="Password"
+                    /> 
+                    <br />
+                    <br />
+                    <input className="loginInput"
+                        type="password"
+                        name="confirmPassword"
+                        onChange={formik.handleChange}
+                        values={formik.values.confirmPassword}
+                        placeholder="Confirm Password"
+                    />
+                    <br />
+                    <br />
+                        <button type="submit" disabled={!formik.isValid}><span>Register</span></button> 
+                </form>
+                <br />
+                <br />
+                <div className='errorMessages'>
+                    {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
+                    {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
+                    {formik.errors.username ? <div>{formik.errors.username}</div> : null}
+                    {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+                    {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+                    {formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
+                </div>
+                
+                <span><a className="loginLink" href="login">Already have an account?</a></span>
             </div>
         </div>
+    
+
     )
 }
 

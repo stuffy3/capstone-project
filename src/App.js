@@ -4,7 +4,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import CreatePostPage from './components/CreatePostPage';
-import {BrowserRouter, Route, Routes, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 
 import './App.css';
@@ -23,8 +23,9 @@ function App() {
     <div className="App">
       <Routes>
           <Route path='*' element={isLoggedIn ? <Dashboard /> : <Login logFunction={loginUser}/>} />
-          <Route path='register' element={<Register />} />
+          <Route exact path='/register' element={<Register />} />
           <Route exact path="/create-post" element={<CreatePostPage />} />
+          
       </Routes>
     </div>
   );
