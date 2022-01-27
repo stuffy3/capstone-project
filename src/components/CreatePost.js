@@ -4,11 +4,13 @@ import axios from 'axios'
 import './CreatePost.css'
 
 function CreatePost() {
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [fileInputState, setFileInput] = useState('');
+    const [previewSource, setPreviewSource] = useState('')
+    const [selectedFile, setSelectedFile] = useState('');
     
     
     const initialValues = {
-        
+        myImages: "",
         description: "",
         tickerSymbol: "",
         sellPrice: "",
@@ -17,10 +19,34 @@ function CreatePost() {
         riskAmount: "",
         
     }
+    const handleFileInputChange = (e) => {
+        const file = e.target.files[0];
+        previewFile(file)
+        
+    };
+
+    const previewFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file)
+        reader.onloadend = () => {
+            setPreviewSource(reader.result);
+        }
+    }
+
+    const handleSubmitFile = (e) => {
+        e.preventDefault();
+        if(!previewSource) return;
+        (uploadImage(previewSource))
+    }
+
+    const uploadImage = (base64EncodedImage) => {
+        console.log(base64EncodedImage)
+    } 
 
 
     const onSubmit = (values) => {
-      axios.post('http://localhost:4000/create', values)
+        
+      axios.post('http://localhost:4000/create', {...values, userId: localStorage.getItem('id')})
       .then((res) => {
         console.log(res.data)
       })
@@ -49,6 +75,7 @@ function CreatePost() {
     }
 
     const formik = useFormik({
+        uploadImage,
         initialValues,
         onSubmit,
         validate
@@ -57,29 +84,29 @@ function CreatePost() {
         <div className='mainContentContainer__CreatePost'>
             <div className="mainContentContainer__CreatePost__Form">
                 <h1>Create a Post</h1>
-                <br />
+                    {previewSource && (
+                        
+                        <img src={previewSource} alt="chosenImage"
+                        style={{height: 'auto', width: 250, marginBottom: 15}} />
+                    )} 
                 <fieldset>
                 <form onSubmit={formik.handleSubmit}>
-                    {/* <input
+                    <input className='imageUploader'
                         type="file"
                         name="myImages"
-                        onChange={(event) => {
-                            setSelectedImage(event.target.files[0])
-                            console.log(initialValues.myImages[0])
-                        }}
+                        onChange={handleFileInputChange}
                         values={formik.values.myImages}
                         placeholder="Upload Image"
-                    /> */}
-                    <h3><span>Description</span></h3>
-                    <br />
-                    <textarea  className="descriptionInput"                        
-                        type="text"
-                        name="description"
-                        onChange={formik.handleChange}
-                        values={formik.values.description}
-                        placeholder="Description"
+                    />
+                        <h3><span>Description</span></h3>
+                        <textarea  className="descriptionInput"                        
+                            type="text"
+                            name="description"
+                            onChange={formik.handleChange}
+                            values={formik.values.description}
+                            placeholder="Description"
                         />
-                        <br />
+
                         <h3><span>Ticker Symbol</span></h3>
                         <br />
                     <input
@@ -123,22 +150,22 @@ function CreatePost() {
                     <h3><span>Stop Price</span></h3>
                     <br />
                     <input
-                    type="number"
-                    name="riskAmount"
-                    onChange={formik.handleChange}
-                    values={formik.values.riskAmount}
-                    placeholder="Amount of Risk"
+                        type="number"
+                        name="riskAmount"
+                        onChange={formik.handleChange}
+                        values={formik.values.riskAmount}
+                        placeholder="Amount of Risk"
                     />
                     <br />
+                    <div className="createPostErrorMessage">
+                        {formik.errors.description ? <div >{formik.errors.description}</div> : null}
+                        {formik.errors.tickerSymbol ? <div>{formik.errors.tickerSymbol}</div> : null}
+                        {formik.errors.shares ? <div>{formik.errors.shares}</div> : null}
+                        {formik.errors.price ? <div>{formik.errors.price}</div> : null}
+                        {formik.errors.riskAmount ? <div>{formik.errors.riskAmount}</div> : null}
+                    </div>
+                    <button className="createPostSubmitButton" type="submit" disabled={!formik.isValid}><span>Create Post</span></button> 
                 </form>
-                <div className="createPostErrorMessage">
-                    {formik.errors.description ? <div >{formik.errors.description}</div> : null}
-                    {formik.errors.tickerSymbol ? <div>{formik.errors.tickerSymbol}</div> : null}
-                    {formik.errors.shares ? <div>{formik.errors.shares}</div> : null}
-                    {formik.errors.price ? <div>{formik.errors.price}</div> : null}
-                    {formik.errors.riskAmount ? <div>{formik.errors.riskAmount}</div> : null}
-                </div>
-                <button className="createPostSubmitButton" type="submit" disabled={!formik.isValid}><span>Create Post</span></button> 
                 </fieldset>
             </div>
         </div>

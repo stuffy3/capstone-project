@@ -64,23 +64,36 @@ app.post('/register', async (req, res) => {
 })
 
 app.post('/create', async (req, res) => {
-  const {  description, tickerSymbol, win, shares, price, riskAmount} = req.body
+  const {userId, myImages, description, tickerSymbol, shares, price, riskAmount} = req.body
   await sequelize.query(`
-  INSERT INTO posts(description, tickersymbol, win, shares, price, riskamount)
+  INSERT INTO posts(user_id, description, tickersymbol, shares, price, riskamount,  myimages,)
   VALUES (
-    
+    '${userId}',
     '${description}',
     '${tickerSymbol}',
-    '${win}',
     '${shares}',
     '${price}',
     '${riskAmount}'
-  )
+    '${myImages}',
+    )
   `)
   .catch((err) => console.log(err))
   
   res.status(200).send('query-sent')
 })
+
+app.get('/posts', async (req, res) => {
+  const {userId} = req.body
+  console.log(userId)
+  let posts = await sequelize.query(`
+  SELECT * FROM posts
+  
+  ORDER BY id DESC `)
+
+  res.status(200).send(posts[0])
+
+})
+
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

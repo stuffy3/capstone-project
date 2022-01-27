@@ -3,6 +3,9 @@
 }
 
 .navContainer {
+    border-style: solid;
+    border-color: #494949;
+    border-width: 1px;
     position: -webkit-sticky;
     position: sticky;
     overflow: hidden;

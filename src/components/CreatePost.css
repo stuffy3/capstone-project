@@ -1,5 +1,6 @@
 .mainContentContainer__CreatePost {
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,6 +27,7 @@ h1 {
 h3 {
   color: white;
 }
+
 .descriptionInput {
   display: inline-block;
   text-overflow: clip;
@@ -34,6 +36,9 @@ h3 {
   color: white;
   width: 800px;
   height: 100px;
+}
+.descriptionInput::placeholder {
+  color: transparent;
 }
 
 input {

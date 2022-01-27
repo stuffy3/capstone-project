@@ -8,7 +8,7 @@ export default function NavBar() {
             <nav className='navigation'>
                 <div className='navBarInner'>
                     <div className='navBarItems'>
-                        The Trading Eye
+                        Creating An Edge
                     </div>
                     <div className='anchorPointRight'>
                         <a href='/home'>Home</a>
