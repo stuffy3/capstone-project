@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useFormik} from 'formik'
 import axios from 'axios'
 import './CreatePost.css'
@@ -6,49 +6,54 @@ import './CreatePost.css'
 function CreatePost() {
     const [fileInputState, setFileInput] = useState('');
     const [previewSource, setPreviewSource] = useState('')
-    const [selectedFile, setSelectedFile] = useState('');
-    
-    
+    const [imageUrl, setImageUrl] = useState('')
     const initialValues = {
-        myImages: "",
         description: "",
         tickerSymbol: "",
         sellPrice: "",
         shares: "",
         price: "",
         riskAmount: "",
-        
     }
     const handleFileInputChange = (e) => {
         const file = e.target.files[0];
         previewFile(file)
         
     };
-
     const previewFile = (file) => {
         const reader = new FileReader();
         reader.readAsDataURL(file)
         reader.onloadend = () => {
             setPreviewSource(reader.result);
+           
         }
     }
-
     const handleSubmitFile = (e) => {
-        e.preventDefault();
-        if(!previewSource) return;
-        (uploadImage(previewSource))
+        uploadImage(e)
     }
+    const uploadImage =  (base64EncodedImage) => {
+        const formData = new FormData()
+        formData.append("file", base64EncodedImage)
+        formData.append("upload_preset", "ml_default")
+        axios.post('https://api.cloudinary.com/v1_1/creating-an-edge/image/upload', formData)
+        .then((response) => {
+            setImageUrl(response.data.secure_url)
+            
+            
+        })
 
-    const uploadImage = (base64EncodedImage) => {
-        console.log(base64EncodedImage)
-    } 
-
-
-    const onSubmit = (values) => {
         
-      axios.post('http://localhost:4000/create', {...values, userId: localStorage.getItem('id')})
+    } 
+    const imageSubmit = (e) => {
+        handleSubmitFile(e)
+    }
+    
+    const onSubmit =  (values) => {
+    imageSubmit(previewSource)  
+    axios.post('http://localhost:4000/create', {...values, imageUrlString: imageUrl, userId: localStorage.getItem('id')} )
       .then((res) => {
-        console.log(res.data)
+          
+          console.log(res.data)
       })
       .catch((err) => console.log(err.response.data))
     }
@@ -75,7 +80,6 @@ function CreatePost() {
     }
 
     const formik = useFormik({
-        uploadImage,
         initialValues,
         onSubmit,
         validate
@@ -93,9 +97,9 @@ function CreatePost() {
                 <form onSubmit={formik.handleSubmit}>
                     <input className='imageUploader'
                         type="file"
-                        name="myImages"
+                        name="imageUrl"
                         onChange={handleFileInputChange}
-                        values={formik.values.myImages}
+                        values={fileInputState}
                         placeholder="Upload Image"
                     />
                         <h3><span>Description</span></h3>

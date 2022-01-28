@@ -4,9 +4,9 @@ function PostList({posts}) {
   return <div>{
     posts.map((post) => {
         return (
-          <div className='postContentBackground'>
             <div className="postContentMainBackground" key={post.id}>
-            {/* <img src={post.images} alt='random'/> */}
+          <div className='postContentBackground'>
+            <img src={post.myimages} style={{height: '200', width: '250px'}} alt='random'/>
             <p>{post.description}</p>
             <h1>{post.tickersymbol}</h1>
             <h1>Shares:{post.shares}</h1>

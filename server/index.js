@@ -64,30 +64,30 @@ app.post('/register', async (req, res) => {
 })
 
 app.post('/create', async (req, res) => {
-  const {userId, myImages, description, tickerSymbol, shares, price, riskAmount} = req.body
+  const {userId, description, tickerSymbol, shares, price, riskAmount, imageUrlString,} = req.body
   await sequelize.query(`
-  INSERT INTO posts(user_id, description, tickersymbol, shares, price, riskamount,  myimages,)
+  INSERT INTO posts(user_id, description, tickersymbol, shares, price, riskamount,  myimages)
   VALUES (
     '${userId}',
     '${description}',
     '${tickerSymbol}',
     '${shares}',
     '${price}',
-    '${riskAmount}'
-    '${myImages}',
+    '${riskAmount}',
+    '${imageUrlString}'
     )
   `)
   .catch((err) => console.log(err))
   
-  res.status(200).send('query-sent')
+  res.status(200).send("posted to db")
 })
 
-app.get('/posts', async (req, res) => {
-  const {userId} = req.body
+app.get('/posts', async (req, res,) => {
+  const userId = req.query.userId
   console.log(userId)
   let posts = await sequelize.query(`
   SELECT * FROM posts
-  
+  WHERE user_id = '${userId}'
   ORDER BY id DESC `)
 
   res.status(200).send(posts[0])

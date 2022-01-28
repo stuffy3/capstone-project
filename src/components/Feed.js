@@ -11,13 +11,15 @@ export default class Feed extends Component {
     constructor() {
         super()
     this.state = {
-      posts: []
+      posts: [],
+      
     }
 }
 
     componentDidMount(){
-        let userId = localStorage.getItem('id')
-        axios.get('http://localhost:4000/posts', {userId} )
+        const userId = localStorage.getItem('id')
+        
+        axios.get('http://localhost:4000/posts', {params: {userId}}  )
         .then((res) => {
             this.setState({posts: res.data})
             console.log(res.data)
