@@ -6,7 +6,7 @@ import './CreatePost.css'
 function CreatePost() {
     const [fileInputState, setFileInput] = useState('');
     const [previewSource, setPreviewSource] = useState('')
-    const [imageUrl, setImageUrl] = useState('')
+    
     const initialValues = {
         description: "",
         tickerSymbol: "",
@@ -18,44 +18,32 @@ function CreatePost() {
     const handleFileInputChange = (e) => {
         const file = e.target.files[0];
         previewFile(file)
-        
     };
     const previewFile = (file) => {
         const reader = new FileReader();
         reader.readAsDataURL(file)
         reader.onloadend = () => {
             setPreviewSource(reader.result);
-           
         }
     }
-    const handleSubmitFile = (e) => {
-        uploadImage(e)
-    }
-    const uploadImage =  (base64EncodedImage) => {
+    const uploadImage = async (base64EncodedImage) => {
         const formData = new FormData()
         formData.append("file", base64EncodedImage)
         formData.append("upload_preset", "ml_default")
-        axios.post('https://api.cloudinary.com/v1_1/creating-an-edge/image/upload', formData)
+        await axios.post('https://api.cloudinary.com/v1_1/creating-an-edge/image/upload', formData)
         .then((response) => {
-            setImageUrl(response.data.secure_url)
-            
-            
+            console.log(response.data.secure_url)
+            localStorage.setItem('url', response.data.secure_url)
         })
-
-        
     } 
-    const imageSubmit = (e) => {
-        handleSubmitFile(e)
-    }
     
-    const onSubmit =  (values) => {
-    imageSubmit(previewSource)  
-    axios.post('http://localhost:4000/create', {...values, imageUrlString: imageUrl, userId: localStorage.getItem('id')} )
-      .then((res) => {
-          
-          console.log(res.data)
-      })
-      .catch((err) => console.log(err.response.data))
+    const onSubmit = async (values) => {
+        await uploadImage(previewSource)
+         axios.post('http://localhost:4000/create', {...values, imageUrlString: localStorage.getItem('url'), userId: localStorage.getItem('id')} )
+        .then((res) => {
+            console.log(res.data)
+        })
+        .catch((err) => console.log(err.response.data))
     }
 
     const validate = (values) => {
