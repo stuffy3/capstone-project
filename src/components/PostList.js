@@ -8,13 +8,18 @@ function PostList({posts}) {
               <div className='postContentBackground'>
                 <div className="postContentTop">
                   <h1 className="postTickerSymbol">{post.tickersymbol.toUpperCase()}</h1>
-                  <h2 className="postText">Shares Bought: {post.shares}</h2>
-                  <h2 className="postText">Price of Purchase: ${post.price}</h2>
-                  <div>
-                    <img className="postImages" src={post.myimages} style={{height: '350', width: '350px'}} alt='random'/>
-                    <p className="postDescription">{post.description}</p>
-                  </div>
+                  <hr className="postTopDivider" color={343434}/>
                 </div>
+                <div className="postData">
+                  <h3 className="postText">Shares Bought: {post.shares}</h3>
+                  <h3 className="postText">Buy Price: ${post.price}</h3>
+                  <h3 className="postText">Sell Price: ${post.sellprice}</h3>
+                  <h3 className="postText">Risk Amount: ${post.riskamount}</h3>
+                </div>
+                <div className="postImageContainer">
+                  <img className="postImages" src={post.myimages} alt='random'/>
+                </div>
+                    <p className="postDescription">{post.description}</p>
               </div>
           </div>
         )

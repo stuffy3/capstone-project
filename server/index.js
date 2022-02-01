@@ -64,9 +64,9 @@ app.post('/register', async (req, res) => {
 })
 
 app.post('/create', async (req, res) => {
-  const {userId, description, tickerSymbol, shares, price, riskAmount, imageUrlString} = req.body
+  const {userId, description, tickerSymbol, sellPrice, shares, price, riskAmount, imageUrlString} = req.body
   await sequelize.query(`
-  INSERT INTO posts(user_id, description, tickersymbol, shares, price, riskamount,  myimages)
+  INSERT INTO posts(user_id, description, tickersymbol, shares, price, riskamount,  myimages, sellprice)
   VALUES (
     '${userId}',
     '${description}',
@@ -75,6 +75,7 @@ app.post('/create', async (req, res) => {
     '${price}',
     '${riskAmount}',
     '${imageUrlString}'
+    '${sellPrice}'
     )
   `)
   .catch((err) => console.log(err))
