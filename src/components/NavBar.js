@@ -13,7 +13,7 @@ export default function NavBar() {
                     <div className='anchorPointRight'>
                         <a href='/home'>Home</a>
                         <a href='/getting-started'>Getting Started</a>
-                        <a href='/create-post'>Create Post</a>
+                        <a href='/create-post'>Create an Entry</a>
                         <a href='/profile'>Profile</a>
                     </div>
                 </div>

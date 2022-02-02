@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
+import { useNavigate } from 'react-router'
 import {useFormik} from 'formik'
 import axios from 'axios'
 import './CreatePost.css'
@@ -6,7 +7,8 @@ import './CreatePost.css'
 function CreatePost() {
     const [fileInputState, setFileInput] = useState('');
     const [previewSource, setPreviewSource] = useState('')
-    
+    let navigate = useNavigate()
+
     const initialValues = {
         description: "",
         tickerSymbol: "",
@@ -15,17 +17,19 @@ function CreatePost() {
         price: "",
         riskAmount: "",
     }
+
     const handleFileInputChange = (e) => {
         const file = e.target.files[0];
         previewFile(file)
     };
+
     const previewFile = (file) => {
         const reader = new FileReader();
         reader.readAsDataURL(file)
         reader.onloadend = () => {
             setPreviewSource(reader.result);
         }
-    }
+    };
     const uploadImage = async (base64EncodedImage) => {
         const formData = new FormData()
         formData.append("file", base64EncodedImage)
@@ -35,13 +39,13 @@ function CreatePost() {
             console.log(response.data.secure_url)
             localStorage.setItem('url', response.data.secure_url)
         })
-    } 
+    };
     
     const onSubmit = async (values) => {
         await uploadImage(previewSource)
          axios.post('http://localhost:4000/create', {...values, imageUrlString: localStorage.getItem('url'), userId: localStorage.getItem('id')} )
         .then((res) => {
-            console.log(res.data)
+            navigate('/home')
         })
         .catch((err) => console.log(err.response.data))
     }
@@ -75,7 +79,7 @@ function CreatePost() {
     return (
         <div className='mainContentContainer__CreatePost'>
             <div className="mainContentContainer__CreatePost__Form">
-                <h1>Create a Post</h1>
+                <h1>Create an Entry</h1>
                     {previewSource && (
                         
                         <img src={previewSource} alt="chosenImage"
@@ -89,6 +93,7 @@ function CreatePost() {
                         onChange={handleFileInputChange}
                         values={fileInputState}
                         placeholder="Upload Image"
+                        accept="image/jpeg"
                     />
                         <h3><span>Description</span></h3>
                         <textarea  className="descriptionInput"                        
@@ -156,7 +161,7 @@ function CreatePost() {
                         {formik.errors.price ? <div>{formik.errors.price}</div> : null}
                         {formik.errors.riskAmount ? <div>{formik.errors.riskAmount}</div> : null}
                     </div>
-                    <button className="createPostSubmitButton" type="submit" disabled={!formik.isValid}><span>Create Post</span></button> 
+                    <button className="createPostSubmitButton" type="submit" disabled={!formik.isValid}><span>Create Entry</span></button> 
                 </form>
                 </fieldset>
             </div>

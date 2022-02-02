@@ -28,6 +28,11 @@ h3 {
   color: white;
 }
 
+.imageUploader {
+  background-color: transparent;
+  
+}
+
 .descriptionInput {
   display: inline-block;
   text-overflow: clip;
