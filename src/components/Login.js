@@ -45,9 +45,6 @@ export default function Login(props) {
     
     return ( 
         <div className="mainBodyContainer">
-            <header>
-                
-            </header>
             <div className='loginCenterContainer'>
                 <h1>Sign in</h1>
                 <hr width={250} color={272727} />

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Routes, Route} from 'react-router'
+import {Link} from 'react-router-dom'
 import './NavBar.css'
 
 export default function NavBar() {
@@ -11,10 +11,10 @@ export default function NavBar() {
                         Creating An Edge
                     </div>
                     <div className='anchorPointRight'>
-                        <a href='/home'>Home</a>
-                        <a href='/getting-started'>Getting Started</a>
-                        <a href='/create-post'>Create an Entry</a>
-                        <a href='/profile'>Profile</a>
+                        <Link to='/home'>Home</Link>
+                        <Link to='/getting-started'>Getting Started</Link>
+                        <Link to='/create-post'>Create an Entry</Link>
+                        <Link to='/profile'>Profile</Link>
                     </div>
                 </div>
             </nav>

@@ -45,9 +45,9 @@ function CreatePost() {
         await uploadImage(previewSource)
          axios.post('http://localhost:4000/create', {...values, imageUrlString: localStorage.getItem('url'), userId: localStorage.getItem('id')} )
         .then((res) => {
-            navigate('/home')
         })
         .catch((err) => console.log(err.response.data))
+        navigate('/home')
     }
 
     const validate = (values) => {
@@ -86,15 +86,15 @@ function CreatePost() {
                         style={{height: 'auto', width: 250, marginBottom: 15}} />
                     )} 
                 <fieldset>
-                <form onSubmit={formik.handleSubmit}>
-                    <input className='imageUploader'
-                        type="file"
-                        name="imageUrl"
-                        onChange={handleFileInputChange}
-                        values={fileInputState}
-                        placeholder="Upload Image"
-                        accept="image/jpeg"
-                    />
+                    <form onSubmit={formik.handleSubmit}>
+                        <input className='imageUploader'
+                            type="file"
+                            name="imageUrl"
+                            onChange={handleFileInputChange}
+                            values={fileInputState}
+                            placeholder="Upload Image"
+                            accept="image/jpeg"
+                        />
                         <h3><span>Description</span></h3>
                         <textarea  className="descriptionInput"                        
                             type="text"
@@ -103,66 +103,55 @@ function CreatePost() {
                             values={formik.values.description}
                             placeholder="Description"
                         />
-
                         <h3><span>Ticker Symbol</span></h3>
-                        <br />
-                    <input
-                        type="text"
-                        name="tickerSymbol"
-                        onChange={formik.handleChange}
-                        values={formik.values.tickerSymbol}
-                        placeholder="Ticker Symbol"
+                        <input
+                            type="text"
+                            name="tickerSymbol"
+                            onChange={formik.handleChange}
+                            values={formik.values.tickerSymbol}
+                            placeholder="Ticker Symbol"
                         />
-                        <br />
                         <h3><span>Number of Shares</span></h3>
-                        <br />
-                    <input
-                        type="number"
-                        name="shares"
-                        onChange={formik.handleChange}
-                        values={formik.values.shares}
-                        placeholder="Number of Shares"
+                        <input
+                            type="number"
+                            name="shares"
+                            onChange={formik.handleChange}
+                            values={formik.values.shares}
+                            placeholder="Number of Shares"
                         />
-                        <br />
                         <h3><span>Price Per Share</span></h3>
-                        <br />
-                    <input
-                        type="number"
-                        name="price"
-                        onChange={formik.handleChange}
-                        values={formik.values.price}
-                        placeholder="Price of Purchase"
+                        <input
+                            type="number"
+                            name="price"
+                            onChange={formik.handleChange}
+                            values={formik.values.price}
+                            placeholder="Price of Purchase"
                         />
-                        <br />
+                        <h3><span>Stop Price</span></h3>
+                        <input
+                            type="number"
+                            name="riskAmount"
+                            onChange={formik.handleChange}
+                            values={formik.values.riskAmount}
+                            placeholder="Amount of Risk"
+                        />
                         <h3><span>Sell Price Per Share</span></h3>
-                        <br />
-                    <input
-                        type="number"
-                        name="sellPrice"
-                        onChange={formik.handleChange}
-                        values={formik.values.sellPrice}
-                        placeholder="Price of Sale"
+                        <input
+                            type="number"
+                            name="sellPrice"
+                            onChange={formik.handleChange}
+                            values={formik.values.sellPrice}
+                            placeholder="Price of Sale"
                         />
-                    <br />
-                    <h3><span>Stop Price</span></h3>
-                    <br />
-                    <input
-                        type="number"
-                        name="riskAmount"
-                        onChange={formik.handleChange}
-                        values={formik.values.riskAmount}
-                        placeholder="Amount of Risk"
-                    />
-                    <br />
-                    <div className="createPostErrorMessage">
-                        {formik.errors.description ? <div >{formik.errors.description}</div> : null}
-                        {formik.errors.tickerSymbol ? <div>{formik.errors.tickerSymbol}</div> : null}
-                        {formik.errors.shares ? <div>{formik.errors.shares}</div> : null}
-                        {formik.errors.price ? <div>{formik.errors.price}</div> : null}
-                        {formik.errors.riskAmount ? <div>{formik.errors.riskAmount}</div> : null}
-                    </div>
-                    <button className="createPostSubmitButton" type="submit" disabled={!formik.isValid}><span>Create Entry</span></button> 
-                </form>
+                        <div className="createPostErrorMessage">
+                            {formik.errors.description ? <div >{formik.errors.description}</div> : null}
+                            {formik.errors.tickerSymbol ? <div>{formik.errors.tickerSymbol}</div> : null}
+                            {formik.errors.shares ? <div>{formik.errors.shares}</div> : null}
+                            {formik.errors.price ? <div>{formik.errors.price}</div> : null}
+                            {formik.errors.riskAmount ? <div>{formik.errors.riskAmount}</div> : null}
+                        </div>
+                        <button className="createPostSubmitButton" type="submit" disabled={!formik.isValid}><span>Create Entry</span></button> 
+                    </form>
                 </fieldset>
             </div>
         </div>
