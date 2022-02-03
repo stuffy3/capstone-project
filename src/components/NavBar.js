@@ -8,7 +8,7 @@ export default function NavBar() {
             <nav className='navigation'>
                 <div className='navBarInner'>
                     <div className='navBarItems'>
-                        Creating An Edge
+                        <Link style={{textDecoration: "none", color: "white"}} to='./home'>Creating An Edge</Link>
                     </div>
                     <div className='anchorPointRight'>
                         <Link to='/home'>Home</Link>

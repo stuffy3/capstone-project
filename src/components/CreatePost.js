@@ -44,10 +44,13 @@ function CreatePost() {
     const onSubmit = async (values) => {
         await uploadImage(previewSource)
          axios.post('http://localhost:4000/create', {...values, imageUrlString: localStorage.getItem('url'), userId: localStorage.getItem('id')} )
-        .then((res) => {
+        .then((res) => { 
+            setTimeout(function() {
+                navigate('/home')
+            }, 1000);
         })
         .catch((err) => console.log(err.response.data))
-        navigate('/home')
+        
     }
 
     const validate = (values) => {

@@ -3,3 +3,30 @@
     height: 100vh;
 
 }
+
+.gettingStartedMainHeader {
+    background-color: black;
+    height: 200px;
+
+}
+
+.gettingStartedTopics {
+    background-color:rgb(46, 46, 46);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #565656;
+    height: 100%;
+    display: flex;
+    justify-content:space-evenly;
+    color: white;
+}
+
+.gettingStartedTopicsDescription {
+    text-align: center;
+    line-height: 10px;
+}
+.gettingStartedTopicsDescription a {
+    
+    text-decoration-color: rgb(255, 255, 255);
+    color:rgb(255, 255, 255)
+}
