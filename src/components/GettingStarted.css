@@ -17,15 +17,26 @@
     border-color: #565656;
     height: 100%;
     display: flex;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     color: white;
+    
+}
+
+.gettingStartedTopicsColumns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .gettingStartedTopicsDescription {
-    text-align: center;
-    line-height: 10px;
+    display: flex;
+    
+    overflow-wrap: break-word;
+    width: 400px;
+    text-align: left;
+    
 }
-.gettingStartedTopicsDescription a {
+.gettingStartedTopics a {
     
     text-decoration-color: rgb(255, 255, 255);
     color:rgb(255, 255, 255)

@@ -46,7 +46,7 @@ export default class Feed extends Component {
                 </div>
                 : null}{this.state.response && this.state.posts.length === 0 ?
                 <div style={{height: "92.5vh", color: "white"}}>
-                <h2>No Entries? Click </h2><Link to="create-post">Getting Started</Link>
+                <h1>No Entries? Click </h1><Link style={{ fontSize: 30, color: "white"}} to="getting-started">Getting Started</Link>
             </div> : null}
             </div>
         )
