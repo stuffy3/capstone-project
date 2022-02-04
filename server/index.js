@@ -65,11 +65,12 @@ app.post('/register', async (req, res) => {
 
 app.post('/create', async (req, res) => {
   const {userId, description, tickerSymbol, sellPrice, shares, price, riskAmount, imageUrlString} = req.body
+  const replaceDescription = description.replace("\'", "`")
   await sequelize.query(`
   INSERT INTO posts(user_id, description, tickersymbol, shares, price, riskamount, myimages, sellprice)
   VALUES(
     '${userId}',
-    '${description}',
+    '${replaceDescription}',
     '${tickerSymbol}',
     '${shares}',
     '${price}',
