@@ -28,7 +28,7 @@ export default function GettingStarted() {
               <div className="gettingStartedTopicsDescription">
                 <p>Have access to all current and previous posts
                   presented to you in an easy to read format.
-                  Giving you the ability to stgit udy and learn from your previous trades and investments.
+                  This gives you the ability to study and learn from your previous trades and investments.
                 </p>
               </div>
             </div>

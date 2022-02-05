@@ -6,6 +6,9 @@
 
 .gettingStartedMainHeader {
     background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 200px;
 
 }
@@ -17,6 +20,8 @@
     border-color: #565656;
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-evenly;
     color: white;
     
